@@ -1,7 +1,3 @@
-<template>
-    <div ref="dotOutline" class="cursor-dot-outline"></div>
-</template>
-
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
@@ -97,9 +93,11 @@ onBeforeUnmount(() => {
     }
 
 })
-
-
 </script>
+
+<template>
+    <div ref="dotOutline" class="hidden lg:block cursor-dot-outline"></div>
+</template>
 
 <style scoped>
 .cursor-dot-outline {
@@ -110,14 +108,13 @@ onBeforeUnmount(() => {
     transform: translate(-50%, -50%);
     border-radius: 50%;
     opacity: 1;
-    transition: opacity 0.4s cubic-bezier(0.87, 0, 0.13, 1), transform 0.4s cubic-bezier(0.87, 0, 0.13, 1);
-}
-
-.cursor-dot-outline {
+    transition: opacity 0.1s cubic-bezier(0.7, 0, 0.84, 0);
     width: 20px;
     height: 20px;
     background-color: rgba(232, 238, 241, 0.5);
-    border: 1px solid #7d6b57;
+    border: 1px solid #414141;
     z-index: 7000;
 }
+
+/* .cursor-dot-outline {} */
 </style>

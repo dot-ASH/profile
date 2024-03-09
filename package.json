@@ -20,12 +20,11 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-vue-next": "^0.352.0",
-    "radix-vue": "^1.5.1",
-    "shadcn-vue": "^0.10.1",
     "svg-path-commander": "^2.0.9",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "vue": "^3.4.15"
+    "vue": "^3.4.15",
+    "vuetify": "^3.5.8"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",

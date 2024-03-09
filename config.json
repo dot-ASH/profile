@@ -6,7 +6,8 @@
     "City": "Dhaka",
     "Country": "Bangladesh",
     "Company": "",
-    "Skills": ["Software Development", "UI/UX Design"]
+    "Skills": ["Software Development", "UI/UX Design"],
+    "Portfolio": "https://sakirashker.vercel.app"
   },
   "images": {
     "primary": "https://res.cloudinary.com/dhqvucmrt/myProfile/xofu2wiu7h3id7ckxwvi",
@@ -80,5 +81,6 @@
       "url": "https://open.spotify.com/playlist/5HY0gEw19HMzwsbCvwQxKi?si=x_70KD0zQd2Xg6-9fu5Vnw&utm_source=copy-link"
     }
   ],
-  "randomKeys": ["yes", "indeed", "Wheezy", "outta", "here"]
+  "randomKeys": ["yes", "indeed", "Wheezy", "outta", "here"],
+  "dev": { "name": "Sakir Ashker", "siteUrl": "https://sakirashker.vercel.app" }
 }

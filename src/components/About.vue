@@ -8,27 +8,16 @@ import type { SocialTypes, SocialMapType } from "@/types/SocialTypes";
 import type { ThemeProps } from "@/types/ThemeProps";
 import type { LoadingProps } from "@/types/LoadingProps";
 // import Tooltip from "./ui/Custom/Tooltip.vue";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from '@/components/ui/tooltip'
 
 // icons
-import { Icon, type IconProps } from '@iconify/vue';
-import IconGithub from '@iconify/icons-fa-brands/github';
-import IconDiscord from '@iconify/icons-fa-brands/discord'
-import IconInstagram from "@iconify/icons-ri/instagram-fill"
-import IconMail from "@iconify/icons-mdi/email"
-import IconReddit from "@iconify/icons-fa-brands/reddit-alien"
-import IconLinkedIN from "@iconify/icons-mdi/linkedin"
+import { Icon } from '@iconify/vue';
+import { socialsMap, TooltipMap } from "@/types/Mapping";
 import IconVueJs from "@iconify/icons-fa-brands/vuejs"
 import IconCircleFill from "@iconify/icons-ri/circle-fill"
 import IconCircle from "@iconify/icons-ri/circle-line"
 import { LoadingKeys, ThemeKeys } from "@/keys/Symbols";
 
-const { socials, profile } = JsonData;
+const { socials, profile, dev } = JsonData;
 const { updateLoading } = inject(LoadingKeys) as LoadingProps;
 const { theme, updateTheme } = inject(ThemeKeys) as ThemeProps;
 
@@ -65,21 +54,12 @@ watch(theme, () => {
     }
 })
 
-const socialsMap: SocialMapType = {
-    "Github": IconGithub,
-    "Discord": IconDiscord,
-    "Instagram": IconInstagram,
-    "Gmail": IconMail,
-    "Reddit": IconReddit,
-    "LinkedIn": IconLinkedIN
-}
-
 onMounted(() => {
     socialSet.value = socials.slice(0, 6).map((item) => ({
         id: item.id,
         url: item.url,
         name: item.name,
-        icon: socialsMap[item.name]
+        icon: socialsMap[item.name.toLowerCase()]
     }))
 })
 
@@ -90,8 +70,6 @@ const setLoading = (i: any) => {
         window.open(socials[i - 1].url, "_blank");
     }, 700);
 }
-
-
 </script>
 
 <template>
@@ -143,26 +121,25 @@ const setLoading = (i: any) => {
                     duration: 1000, ease: [0.16, 1, 0.3, 1]
                 }
             }" class="relative">
-                                <TooltipProvider>
-                                    <Tooltip>
-                                        <TooltipTrigger as-child>
+                                <v-tooltip :location="TooltipMap[index]" :offset="20" content-class="custom-tooltip">
+                                    <span>{{ icon.name }}</span>
+                                    <template v-slot:activator="{ props }">
+                                        <v-div v-bind="props" class="w-auto h-auto flex items-center justify-center">
                                             <button @click="setLoading(icon.id)">
                                                 <Icon :icon="icon.icon" :width="38"
-                                                    class="scale-[1] hover:scale-[1.2] duration-[200ms]">
+                                                    class="scale-[1] hover:scale-[1.2] duration-200">
                                                 </Icon>
                                             </button>
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>{{ icon.name }}</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </TooltipProvider>
+                                        </v-div>
+                                    </template>
+                                </v-tooltip>
                             </div>
                         </div>
-
                     </div>
                     <h2 class="flex w-max">
-                        <p class="text-[16px]">{{ profile.City }} | {{ profile.Country }}</p>
+                        <p class="text-[16px] sm:text-[18px]" :style="{ fontFamily: 'Alegreya SC' }">{{ profile.City }}
+                            | {{
+                profile.Country }}</p>
                     </h2>
                 </div>
                 <div class="hidden sm:flex relative h-[100%]" v-motion :initial="{ opacity: 0 }"
@@ -207,7 +184,17 @@ const setLoading = (i: any) => {
             </div>
             <div class="flex justify-center gap-[0.8rem] items-center w-full h-[15%] p-[2rem] text-xl">
                 <Icon :icon="IconVueJs" :width="22" />
-                <img ref="icon" id="prod" src="/icon-dark.png" class="w-[28px]" />
+                <v-tooltip v-if="dev.siteUrl" :location="'top'" :offset="20" content-class="custom-tooltip">
+                    <span>{{ dev.name }}</span>
+                    <template v-slot:activator="{ props }">
+                        <v-div v-bind="props" class="w-auto h-auto flex items-center justify-center">
+                            <a :href="dev.siteUrl" target="_blank">
+                                <img ref="icon" id="prod" src="/icon-dark.png" class="w-[28px]" />
+                            </a>
+                        </v-div>
+                    </template>
+                </v-tooltip>
+
             </div>
         </div>
     </section>
@@ -265,6 +252,13 @@ const setLoading = (i: any) => {
     z-index: 300;
     font-weight: bolder;
     overflow: visible;
+}
+
+:global(.custom-tooltip) {
+    background-color: rgba(255, 255, 255, 0.615) !important;
+    font-family: "Alegreya SC", serif !important;
+    font-weight: 500;
+    color: #4d3e3e !important;
 }
 
 @media (min-width: 640px) {

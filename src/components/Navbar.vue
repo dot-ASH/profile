@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import JsonData from "../../config.json";
 
-
+const { profile } = JsonData
 const imageLoad = ref(false);
 
 const bottom = () => {
@@ -44,13 +45,14 @@ const imageLoaded = () => {
                     class="about-text lowercase prime-font cursor-pointer underline-effect smoothed text-right">
                     about
                 </p>
-                <p class="font-bold text-2xl lowercase prime-font smoothed text-right">
+                <p v-if="profile.Portfolio" class="font-bold text-2xl lowercase prime-font smoothed text-right">
                     ~
                 </p>
-                <div class="cursor-pointer underline-effect custom-tooltip">
-                    <p class="prime-font lowercase smoothed">
+
+                <div v-if="profile.Portfolio" class="cursor-pointer underline-effect">
+                    <a :href="profile.Portfolio" target="_blank" class="prime-font lowercase smoothed">
                         portfolio
-                    </p>
+                    </a>
                 </div>
             </div>
         </div>
