@@ -1,0 +1,45 @@
+{
+  "name": "profile",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force"
+  },
+  "dependencies": {
+    "@iconify/icons-fa-brands": "^1.2.4",
+    "@iconify/icons-mdi": "^1.2.48",
+    "@iconify/icons-ri": "^1.2.10",
+    "@iconify/vue": "^4.1.1",
+    "@inotom/vue-curve-text": "^3.0.0",
+    "@vueuse/motion": "^2.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "lucide-vue-next": "^0.352.0",
+    "radix-vue": "^1.5.1",
+    "shadcn-vue": "^0.10.1",
+    "svg-path-commander": "^2.0.9",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7",
+    "vue": "^3.4.15"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@types/node": "^20.11.10",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "@vue/tsconfig": "^0.5.1",
+    "autoprefixer": "^10.4.18",
+    "node-sass": "^9.0.0",
+    "npm-run-all2": "^6.1.1",
+    "postcss": "^8.4.35",
+    "sass-loader": "^14.1.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "~5.3.0",
+    "vite": "^5.0.11",
+    "vue-tsc": "^1.8.27"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "profile": {
+    "Name": "Sakir Ashker",
+    "Occupation": "Full Stack Developer",
+    "Bio": "Till The Retrograde is Done",
+    "City": "Dhaka",
+    "Country": "Bangladesh",
+    "Company": "",
+    "Skills": ["Software Development", "UI/UX Design"]
+  },
+  "images": {
+    "primary": "https://res.cloudinary.com/dhqvucmrt/myProfile/xofu2wiu7h3id7ckxwvi",
+    "other": [
+      {
+        "name": "23",
+        "url": "https://res.cloudinary.com/dhqvucmrt/myProfile/nt0tyjwu1fakxhwvt8a4"
+      },
+      {
+        "name": "'22",
+        "url": "https://res.cloudinary.com/dhqvucmrt/myProfile/s7cagx0zav8dzpcncka1"
+      }
+    ]
+  },
+  "socials": [
+    {
+      "id": 1,
+      "name": "Discord",
+      "url": "https://discord.com/users/738030761269133343",
+      "placement": "left",
+      "direction": "up"
+    },
+    {
+      "id": 2,
+      "name": "Instagram",
+      "url": "https://instagram.com/sakirashker?igshid=ZDdkNTZiNTM="
+    },
+    {
+      "id": 3,
+      "name": "Github",
+      "url": "https://github.com/dot-ASH"
+    },
+    {
+      "id": 4,
+      "name": "Gmail",
+      "url": "mailto:nafeesashker63@gmail.com"
+    },
+    {
+      "id": 5,
+      "name": "Reddit",
+      "url": "https://reddit.com/user/dot_ASH/"
+    },
+    {
+      "id": 6,
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/your-linkedin-profile"
+    }
+  ],
+  "quotes": [
+    "The eyes, the contents",
+    "Coffee and sunsets",
+    "The walk, the hair",
+    "Sweetens the air",
+    "BW or vivid",
+    "Films, we love it",
+    "Slumberous and morning",
+    "Music, keep breathing"
+  ],
+  "music": [
+    {
+      "id": 1,
+      "type": "music",
+      "title": "Melody's Echo Chamber - I follow you!",
+      "src": "https://res.cloudinary.com/dhqvucmrt/video/upload/v1676109363/I_Follow_You_y48wxz.mp3",
+      "url": "https://open.spotify.com/track/3EEzQDCP8jRl2pEt9eDKMO?si=8cbce3458941463b"
+    },
+    {
+      "id": 2,
+      "name": "playlist",
+      "title": "Crystallized",
+      "url": "https://open.spotify.com/playlist/5HY0gEw19HMzwsbCvwQxKi?si=x_70KD0zQd2Xg6-9fu5Vnw&utm_source=copy-link"
+    }
+  ],
+  "randomKeys": ["yes", "indeed", "Wheezy", "outta", "here"]
+}
