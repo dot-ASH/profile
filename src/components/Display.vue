@@ -6,6 +6,7 @@ import { CurveText } from '@inotom/vue-curve-text';
 import { LoadingKeys, ThemeKeys } from '@/keys/Symbols';
 import type { LoadingProps } from '@/types/LoadingProps';
 import type { ThemeProps } from '@/types/ThemeProps';
+import spdpImg from "@/assets/img/spdp.png"
 
 interface ThemeType {
     background: string;
@@ -20,7 +21,7 @@ const year = ref<HTMLElement>();
 const bg = ref<HTMLElement>();
 const bg1 = ref<HTMLElement>();
 const bg2 = ref<HTMLElement>();
-
+const spdp = ref<HTMLElement>();
 
 const overlay = ref({
     animation: "beep infinite 3s linear",
@@ -218,24 +219,18 @@ watch(theme, () => {
             <div class="overlay-menu">
                 <div id="play-music" :style="{ animation: overlay.animation, transform: overlay.transform }">
                     <button class=" start" @click.prevent="start" :style="{ opacity: coverOpacity }"
-                        @mouseenter="coverOpacity = 1" />
+                        @mouseenter="coverOpacity = 1"><img src="/songCover.jpg" alt=""></button>
                 </div>
-                <div class="overlay-context" :style="{ width: overlay.width, opacity: overlay.opacity }">
+                <div class=" overlay-context" :style="{ width: overlay.width, opacity: overlay.opacity }">
                     <div class="overlay-context-text">
                         <button @click=" setLoading(0)">
-                            <p :style="{ animation: textAnim }"> &nbsp; {{ music[0].title }} &nbsp; {{ music[0].title }}
+                            <p :style="{ animation: textAnim }"> &nbsp; {{ music[0].title }} &nbsp; {{
+                    music[0].title }}
                             </p>
                         </button>
                     </div>
-                    <!-- <Tippy content="Stop" placement="top" theme="bootstrap" arrow={false} offset="0,7"> -->
-                    <button class="stop" @click.prevent="stop()">
-                        <ToolTip hoverText="Hello" elementText="burh"></ToolTip>
-                    </button>
-
-                    <!-- </Tippy> -->
-                    <!-- <Tippy content={links[1].title} placement="top" theme="bootstrap" arrow={false}> -->
-                    <button @click="setLoading(1)" class="spotii" />
-                    <!-- </Tippy> -->
+                    <button class="stop" @click.prevent="stop()" />
+                    <button @click="setLoading(1)" class="spotii"><img src="/spdp.png" alt=""></button>
                 </div>
             </div>
             <div class="flex relative items-center  w-[35%] dp-container right-display"
@@ -494,7 +489,6 @@ home {
     border-radius: 50%;
     justify-content: center;
     overflow: hidden;
-    background: url("songCover.jpg");
     background-size: cover;
     opacity: 0;
     transition: 500ms ease-out;
@@ -509,7 +503,6 @@ home {
     border-radius: 50%;
     justify-content: center;
     align-items: center;
-    background: url("songCover.jpg");
     background-size: cover;
     opacity: 1;
     transition: 500ms ease-out;
@@ -571,10 +564,10 @@ home {
     height: 35px;
     border-radius: 50%;
     box-shadow: 0 0 5px 2px #343434b8;
-    background: atr;
-    background: url("spdp.png");
-    background-size: cover;
+    overflow: hidden;
+    object-fit: cover;
 }
+
 
 .spotii a {
     width: 100%;

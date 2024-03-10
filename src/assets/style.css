@@ -249,11 +249,11 @@ Tooltip {
   width: 100%;
 }
 
-.rotate {
+/* .rotate {
   -webkit-font-smoothing: subpixel-antialiased;
   transform: rotate(-90deg) scale(2, 2);
   zoom: 0.5;
-}
+} */
 
 .grid-item {
   -webkit-font-smoothing: subpixel-antialiased;
