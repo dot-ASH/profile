@@ -4,15 +4,15 @@ Share a comprehensive overview of your online presence in one place, making it e
 
 ## Features
 
-- Professional self branding site
-- Centralized platform for brief introduction.
+- Professional self-branding site
+- Centralized platform for a brief introduction.
 - Customizable Profiles
 - Social Media Integration
 - Responsive Design
 
 ## Build
 
-- make sure node, npm and pnpm is installed (pre-requisite)
+- make sure node, npm and pnpm are installed
 
 - clone this repo.
 
