@@ -6,8 +6,6 @@ import { CurveText } from '@inotom/vue-curve-text';
 import { LoadingKeys, ThemeKeys } from '@/keys/Symbols';
 import type { LoadingProps } from '@/types/LoadingProps';
 import type { ThemeProps } from '@/types/ThemeProps';
-import Tooltip from './ui/Custom/Tooltip.vue';
-
 
 interface ThemeType {
     background: string;
@@ -15,8 +13,8 @@ interface ThemeType {
 }
 
 const { profile, images, randomKeys, music } = JsonData;
-const { loading, updateLoading } = inject(LoadingKeys) as LoadingProps;
-const { theme, updateTheme } = inject(ThemeKeys) as ThemeProps;
+const { updateLoading } = inject(LoadingKeys) as LoadingProps;
+const { theme } = inject(ThemeKeys) as ThemeProps;
 
 const year = ref<HTMLElement>();
 const bg = ref<HTMLElement>();
@@ -574,7 +572,7 @@ home {
     border-radius: 50%;
     box-shadow: 0 0 5px 2px #343434b8;
     background: atr;
-    background: url("spdp-small.png");
+    background: url("spdp.png");
     background-size: cover;
 }
 

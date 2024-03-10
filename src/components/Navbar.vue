@@ -27,7 +27,7 @@ const imageLoaded = () => {
             :style="{ opacity: imageLoad ? 0 : 1 }" />
         <div
             class="navbar flex items-center justify-around pt-[1rem] md:ml-[3em] sm:ml-[1rem] xl:mx-[4rem] xl:ml-[6rem] xl:pt-[2rem] ">
-            <!-- {/* left */} -->
+
             <div class="flex items-center pl-5 py-6 shrink-0">
                 <div class="text-4xl ">
                     <p class="uppercase prime-font disable-select smoothed ">
@@ -35,11 +35,11 @@ const imageLoaded = () => {
                     </p>
                 </div>
             </div>
-            <!-- {/* middle */} -->
+
             <div class=" sm:flex hidden justify-center w-full m-[1rem]">
                 <div class="hr-line"></div>
             </div>
-            <!-- {/* right */} -->
+
             <div class="disable-select flex gap-[0.5rem] sm:gap-[1rem] items-center sm:mr-[3rem]">
                 <p @click="bottom"
                     class="about-text lowercase prime-font cursor-pointer underline-effect smoothed text-right">

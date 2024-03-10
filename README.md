@@ -1,40 +1,37 @@
 # Profile
 
-This template should help get you started developing with Vue 3 in Vite.
+Share a comprehensive overview of your online presence in one place, making it easier for others to discover and connect with you across various social media platforms.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Professional self branding site
+- Centralized platform for brief introduction.
+- Customizable Profiles
+- Social Media Integration
+- Responsive Design
 
-## Type Support for `.vue` Imports in TS
+## Build
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- make sure node, npm and pnpm is installed (pre-requisite)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+- clone this repo.
 
 ```sh
-pnpm install
+git clone https://github.com/dot-ASH/profile.git
 ```
 
-### Compile and Hot-Reload for Development
+```sh
+cd profile && pnpm install
+```
+
+- make changes to config.json file.
+- change icon.png, songCover.png, spdp.png with your images.
 
 ```sh
 pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Future
 
-```sh
-pnpm build
-```
+- [ ] Views Count
+- [ ] Social media online presence

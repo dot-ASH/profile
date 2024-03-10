@@ -116,5 +116,4 @@ onBeforeUnmount(() => {
     z-index: 7000;
 }
 
-/* .cursor-dot-outline {} */
 </style>

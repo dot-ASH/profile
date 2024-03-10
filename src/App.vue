@@ -22,6 +22,12 @@ const updateTheme = (stringValue: string) => {
 
 onMounted(() => {
   setTimeout(() => {
+    document.title = "Sakir Ashker";
+    const link: HTMLLinkElement | null = document.querySelector("link[rel~='icon']");
+    if (link) {
+      link.href = '/icon.png';
+    }
+
     updateLoading(false)
   }, 750)
 })

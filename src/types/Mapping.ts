@@ -34,3 +34,9 @@ export const TooltipMap: { [Key: number]: "top" | "end" | "bottom" | "start" } =
     4: "bottom",
     5: "bottom",
   };
+
+export const ThemeSvgMap: { [key: string]: string } = {
+  light: "#494f42",
+  mint: "#494f42",
+  brown: "#ead6d6",
+};

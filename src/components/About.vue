@@ -7,11 +7,8 @@ import JsonData from "../../config.json";
 import type { SocialTypes, SocialMapType } from "@/types/SocialTypes";
 import type { ThemeProps } from "@/types/ThemeProps";
 import type { LoadingProps } from "@/types/LoadingProps";
-// import Tooltip from "./ui/Custom/Tooltip.vue";
-
-// icons
 import { Icon } from '@iconify/vue';
-import { socialsMap, TooltipMap } from "@/types/Mapping";
+import { socialsMap, ThemeSvgMap, TooltipMap } from "@/types/Mapping";
 import IconVueJs from "@iconify/icons-fa-brands/vuejs"
 import IconCircleFill from "@iconify/icons-ri/circle-fill"
 import IconCircle from "@iconify/icons-ri/circle-line"
@@ -28,20 +25,20 @@ const icon = ref<HTMLImageElement>();
 
 
 watch(theme, () => {
-
+    console.log(theme.value)
     switch (theme.value) {
         case "light": {
             about.value!.style.color = "#494f42";
             about.value!.style.background =
                 "linear-gradient(0deg, rgb(255, 242, 237) 0%,rgba(255, 229, 217, 1) 30%,rgba(255, 201, 176, 1) 100%)"
-            icon.value!.src = "/icon.png"
+            // icon.value!.src = "/icon.png"
             break;
         }
         case "mint": {
             about.value!.style.color = "#494f42";
             about.value!.style.background =
                 "linear-gradient(0deg, rgba(254,255,254,1) 5%, rgba(224,242,217,1) 64%, rgba(199,222,191,1) 100%)";
-            icon.value!.src = "/icon.png"
+            // icon.value!.src = "/icon.png"
             break;
 
         }
@@ -49,7 +46,7 @@ watch(theme, () => {
             about.value!.style.color = "#ead6d6";
             about.value!.style.background =
                 "linear-gradient(0deg, rgba(157,129,137,1) 1%, rgba(127,101,108,1) 57%, rgba(113,86,93,1) 100%)";
-            icon.value!.src = "/icon-dark.png"
+            // icon.value!.src = "/icon-dark.png"
         }
     }
 })
@@ -188,8 +185,19 @@ const setLoading = (i: any) => {
                     <span>{{ dev.name }}</span>
                     <template v-slot:activator="{ props }">
                         <v-div v-bind="props" class="w-auto h-auto flex items-center justify-center">
-                            <a :href="dev.siteUrl" target="_blank">
-                                <img ref="icon" id="prod" src="/icon-dark.png" class="w-[28px]" />
+                            <a :href="dev.siteUrl" target="_blank" class="w-[20px]">
+                                <!-- <img ref="icon" id="prod" src="/icon-dark.png" class="w-[28px]" /> -->
+                                <svg width="100%" height="100%" viewBox="0 0 135 185" fill="none">
+                                    <path
+                                        d="M128.516 93.2583C128.516 127.09 101.09 154.516 67.2582 154.516C33.4264 154.516 6 127.09 6 93.2583C6 59.4264 33.4264 32.0001 67.2582 32.0001C101.09 32.0001 128.516 59.4264 128.516 93.2583Z"
+                                        :stroke="ThemeSvgMap[theme]" stroke-width="11" stroke-miterlimit="10" />
+                                    <path
+                                        d="M102.652 76.8883C71.2585 64.0457 53.9809 140.728 51.764 182.509C51.7168 183.397 52.7489 183.876 53.3975 183.266C85.4608 153.139 134.077 89.7433 102.652 76.8883Z"
+                                        :fill="ThemeSvgMap[theme]" stroke-width="0" />
+                                    <path
+                                        d="M30.2503 108.471C60.1452 124.496 85.2723 50.0163 91.8048 8.6898C91.9438 7.81062 90.9668 7.22784 90.2585 7.76687C55.2473 34.4114 0.326527 92.4305 30.2503 108.471Z"
+                                        :fill="ThemeSvgMap[theme]" stroke-width="0" />
+                                </svg>
                             </a>
                         </v-div>
                     </template>
