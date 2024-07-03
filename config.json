@@ -5,9 +5,10 @@
     "Bio": "Till The Retrograde is Done",
     "City": "Dhaka",
     "Country": "Bangladesh",
-    "Company": "",
+    "Company": "Digicon Technologies PLC",
+    "Role": "Frontend Developer",
     "Skills": ["Software Development", "UI/UX Design"],
-    "Portfolio": "https://sakirashker.vercel.app"
+    "Portfolio": "https://sakirashker.com"
   },
   "images": {
     "primary": "https://res.cloudinary.com/dhqvucmrt/myProfile/xofu2wiu7h3id7ckxwvi",
@@ -42,8 +43,8 @@
     },
     {
       "id": 4,
-      "name": "Gmail",
-      "url": "mailto:nafeesashker63@gmail.com"
+      "name": "Mail",
+      "url": "mailto:me@sakirashker.com"
     },
     {
       "id": 5,
@@ -53,7 +54,7 @@
     {
       "id": 6,
       "name": "LinkedIn",
-      "url": "https://linkedin.com/in/your-linkedin-profile"
+      "url": "https://www.linkedin.com/in/nafees-ashker-sakir"
     }
   ],
   "quotes": [
@@ -82,5 +83,5 @@
     }
   ],
   "randomKeys": ["yes", "indeed", "Wheezy", "outta", "here"],
-  "dev": { "name": "Sakir Ashker", "siteUrl": "https://sakirashker.vercel.app" }
+  "dev": { "name": "Sakir Ashker", "siteUrl": "https://sakirashker.com" }
 }

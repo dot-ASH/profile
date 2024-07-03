@@ -19,7 +19,7 @@ export const socialsMap: SocialMapType = {
   github: IconGithub,
   discord: IconDiscord,
   instagram: IconInstagram,
-  gmail: IconMail,
+  mail: IconMail,
   reddit: IconReddit,
   linkedin: IconLinkedIN,
   twitch: IconTwitch,
