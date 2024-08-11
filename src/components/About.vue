@@ -102,7 +102,7 @@ const setLoading = (i: any) => {
       class="flex flex-col justify-between items-center w-[100%] h-[100%] z-[150]"
     >
       <div
-        class="my-[2.5rem] gap-[1.5rem] flex flex-col justify-between items-center text-[18px]"
+        class="my-[2.5rem] gap-[1.5rem] flex flex-col justify-between items-center text-[18px] p-3"
       >
         <p class="">~ {{ profile.Occupation }} ~</p>
 
@@ -118,9 +118,19 @@ const setLoading = (i: any) => {
         >
           Currently Working On
         </h1>
-        <h2 v-if="profile.Company" class="text-[14px] lg:text-[18px]">
-          {{ profile.Role }} | {{ profile.Company }}
-        </h2>
+        <div
+          v-if="profile.Company"
+          class="flex flex-col md:flex-row justify-center items-center gap-3"
+        >
+          <div class="flex items-center gap-3">
+            <h2>{{ profile.Role }}</h2>
+            <h2 class="hidden md:block">|</h2>
+          </div>
+          <h2 class="text-[14px] lg:text-[18px] text-center leading-10">
+            {{ profile.Company }}
+          </h2>
+        </div>
+
         <div v-else class="flex gap-[1rem]">
           <h2
             class="text-[14px] sm:text-[18px]"
