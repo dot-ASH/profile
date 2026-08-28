@@ -1,0 +1,57 @@
+---
+interface Props {
+  text: string;
+  width?: number;
+  height?: number;
+  /** Curve depth. The control point sits at `pathHeight - r * 2`. */
+  r?: number;
+  /**
+   * Height used for the arc maths, when it differs from the svg box height.
+   * See the note below on why all three portraits share one arc.
+   */
+  pathHeight?: number;
+  offset?: string;
+  fontSize?: number;
+  class?: string;
+}
+
+const {
+  text,
+  width = 200,
+  height = 50,
+  r = 25,
+  pathHeight = height,
+  offset = '50%',
+  fontSize,
+  class: className,
+} = Astro.props;
+
+// Each instance needs its own path id. The Vue version hardcoded
+// "my-curve-text" on all three, so every <textPath> resolved to the *first*
+// path in the document and all three portraits were laid out on the mobile
+// arc. Callers pass that one arc's geometry explicitly via `pathHeight`/`r`,
+// which keeps the rendering identical now that the ids no longer collide.
+const id = `curve-${Math.random().toString(36).slice(2, 9)}`;
+
+// Same quadratic Bézier @inotom/vue-curve-text drew, without the dependency.
+const d = `M 0,${pathHeight} Q ${width / 2},${pathHeight - r * 2} ${width},${pathHeight}`;
+---
+
+<svg
+  viewBox={`0 0 ${width} ${height}`}
+  width={width}
+  height={height}
+  font-size={fontSize}
+  class={className}
+  role="img"
+  aria-label={text}
+>
+  <g>
+    <path d={d} id={id} stroke="none" fill="none"></path>
+    <text>
+      <textPath href={`#${id}`} fill="currentColor" startOffset={offset} text-anchor="middle">
+        {text}
+      </textPath>
+    </text>
+  </g>
+</svg>

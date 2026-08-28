@@ -1,0 +1,28 @@
+---
+import type { IconData } from '../data/profile';
+
+interface Props {
+  icon: IconData;
+  /** Rendered width; height follows the icon's own aspect ratio, as @iconify/vue did. */
+  size?: number;
+  color?: string;
+  class?: string;
+}
+
+const { icon, size = 24, color, class: className } = Astro.props;
+const { width = 16, height = 16 } = icon;
+const renderedHeight = (size * height) / width;
+---
+
+<!-- Iconify icon data inlined at build time. No runtime, no fetch. -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={`0 0 ${width} ${height}`}
+  width={size}
+  height={renderedHeight}
+  style={color ? `color:${color}` : undefined}
+  class={className}
+  aria-hidden="true"
+  focusable="false"
+  set:html={icon.body}
+/>

@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+import { profile } from '../data/profile';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `Profile | ${profile.Name}`,
+  description = `${profile.Name} — ${profile.Occupation} in ${profile.City}, ${profile.Country}. Links, music and everything else in one place.`,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/icon.png', Astro.site);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#242323" />
+    <link rel="icon" href="/icon.png" type="image/png" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/* Only the weights the page uses: 400 for the quotes, 500 for tooltips,
+        700 for the bold headings. No italics are used anywhere. */}
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@400;500;700&family=Sansita&display=swap"
+    />
+    <link rel="preload" as="font" type="font/woff2" href="/font/Dishcek.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/font/Carmine.woff2" crossorigin />
+
+    {/* Runs before first paint: no theme flash, and no flash of un-revealed content. */}
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        try {
+          var t = localStorage.getItem('theme');
+          root.dataset.theme = t === 'light' || t === 'mint' || t === 'brown' ? t : 'brown';
+        } catch (e) {
+          root.dataset.theme = 'brown';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script>
+      import '../scripts/scroll';
+      import '../scripts/interstitial';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+/*
+ * Theme tokens. The Vue version reached into DOM nodes from a `watch(theme)`
+ * and assigned .style.background / .style.color on four template refs. Here the
+ * theme is one attribute on <html> and everything restyles through the cascade.
+ */
+
+:root,
+:root[data-theme='brown'] {
+  /* the curved-bio surface and the year badge on the hero photos */
+  --surface: #947981;
+  --on-surface: #ffe5d9;
+
+  /* the lower section */
+  --about-fg: #ead6d6;
+  --about-bg: linear-gradient(
+    0deg,
+    rgba(157, 129, 137, 1) 1%,
+    rgba(127, 101, 108, 1) 57%,
+    rgba(113, 86, 93, 1) 100%
+  );
+}
+
+:root[data-theme='light'] {
+  --surface: #ffe5d9;
+  --on-surface: #5a5549;
+
+  --about-fg: #494f42;
+  --about-bg: linear-gradient(
+    0deg,
+    rgb(255, 242, 237) 0%,
+    rgba(255, 229, 217, 1) 30%,
+    rgba(255, 201, 176, 1) 100%
+  );
+}
+
+:root[data-theme='mint'] {
+  --surface: #e5f4df;
+  --on-surface: #5a5549;
+
+  --about-fg: #494f42;
+  --about-bg: linear-gradient(
+    0deg,
+    rgba(254, 255, 254, 1) 5%,
+    rgba(224, 242, 217, 1) 64%,
+    rgba(199, 222, 191, 1) 100%
+  );
+}
+
+:root {
+  /* fixed palette — these never varied with the theme */
+  --cream: #ffe5d9;
+  --ink: #242323;
+  --muted: #bfaca4;
+}

@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Display from '../components/Display.astro';
+import About from '../components/About.astro';
+import CustomCursor from '../components/islands/CustomCursor.svelte';
+import ScreenLoader from '../components/islands/ScreenLoader.svelte';
+---
+
+<Base>
+  <main>
+    {/* pointer-only: never downloaded or run on touch devices */}
+    <CustomCursor client:media="(pointer: fine)" />
+    <ScreenLoader client:load />
+    <Navbar />
+    <Display />
+    <About />
+  </main>
+</Base>

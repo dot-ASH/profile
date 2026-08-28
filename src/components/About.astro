@@ -1,0 +1,243 @@
+---
+import type { ThemeName } from '../data/profile';
+import { profile, socials, quotes, dev } from '../data/profile';
+import { socialsMap, IconCircleFill, IconCircleLine, IconVueJs } from '../data/icons';
+import Icon from './Icon.astro';
+import Tooltip from './Tooltip.astro';
+import ThemeSwitch from './islands/ThemeSwitch.svelte';
+
+// Derived at build time. The Vue version rebuilt this list in onMounted.
+const socialSet = socials.slice(0, 6).map((item) => ({
+  ...item,
+  icon: socialsMap[item.name.toLowerCase()],
+}));
+
+const tooltipPlacement = (index: number) => (index < 3 ? 'top' : 'bottom') as 'top' | 'bottom';
+
+const swatches: { name: ThemeName; color: string; label: string }[] = [
+  { name: 'light', color: '#ffe5d9', label: 'Light theme' },
+  { name: 'mint', color: '#f1faee', label: 'Mint theme' },
+  { name: 'brown', color: '#9d8189', label: 'Brown theme' },
+];
+
+const dots = Array.from({ length: 9 });
+---
+
+<section id="about" class="flex flex-col rounded-t-[4rem] rounded-b-[1rem] justify-center sm:mt-[1rem]">
+  <div class="flex gap-[1rem] pl-[1rem] w-full justify-center items-center h-[6rem] text-3xl z-[100]">
+    <ThemeSwitch client:visible swatches={swatches} />
+  </div>
+
+  <div class="flex flex-col justify-between items-center w-full h-full z-[150]">
+    <div class="my-[2.5rem] gap-[1.5rem] flex flex-col justify-between items-center text-[18px] p-3">
+      <p>~ {profile.Occupation} ~</p>
+
+      <h1 class="smoothed font-extrabold tracking-wider text-[20px] sm:text-[24px]">
+        {profile.Company ? 'Currently Working As' : 'Currently Working On'}
+      </h1>
+
+      {
+        profile.Company ? (
+          <div class="flex flex-col md:flex-row justify-center items-center gap-3">
+            <div class="flex items-center gap-3">
+              <h2>{profile.Role}</h2>
+              <h2 class="hidden md:block">|</h2>
+            </div>
+            <h2 class="text-[14px] lg:text-[18px] text-center leading-10">{profile.Company}</h2>
+          </div>
+        ) : (
+          <div class="flex gap-[1rem]">
+            {profile.Skills.map((skill, index) => (
+              <h2 class="text-[14px] sm:text-[18px]">
+                {skill} {index < profile.Skills.length - 1 ? '|' : ''}
+              </h2>
+            ))}
+          </div>
+        )
+      }
+    </div>
+
+    <div class="flex justify-center w-full h-[60%]">
+      <div class="sm:flex hidden typo absolute left-0 w-[33%]">
+        <div class="relative">
+          {
+            quotes.map((text, index) => (
+              <p data-reveal="left" data-reveal-once="false" data-reveal-delay={index * 0.05}>
+                {text}
+              </p>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-center items-center w-full sm:w-[40%] h-full">
+        {/* Each cell is flex+centred so the icon centres in its (narrower) grid
+            column and the wrapper adds no baseline gap under the row. */}
+        <div class="grid grid-section grid-cols-3 h-[60%] sm:ml-0">
+          {
+            socialSet.map((social, index) => (
+              <div
+                class="relative flex justify-center items-start"
+                data-reveal={index === 1 || index === 4 ? 'up' : 'down'}
+                data-reveal-once="false"
+              >
+                <Tooltip label={social.name} placement={tooltipPlacement(index)}>
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener"
+                    data-interstitial
+                    aria-label={social.name}
+                    class="flex items-center justify-center"
+                  >
+                    <Icon icon={social.icon} size={38} class="social-icon" />
+                  </a>
+                </Tooltip>
+              </div>
+            ))
+          }
+        </div>
+        <h2 class="flex w-max">
+          <span class="text-[16px] sm:text-[18px] quote-font">{profile.City} | {profile.Country}</span>
+        </h2>
+      </div>
+
+      <div class="hidden sm:flex relative h-full" data-reveal="fade" data-reveal-duration="0.4" data-reveal-ease="circ" data-reveal-once="false">
+        <div class="dot-matrix filled">
+          {dots.map(() => <Icon icon={IconCircleFill} size={20} />)}
+        </div>
+        <div class="dot-matrix outlined">
+          {dots.map(() => <Icon icon={IconCircleLine} size={20} />)}
+        </div>
+      </div>
+    </div>
+
+    <footer class="flex justify-center gap-[0.8rem] items-center w-full h-[15%] p-[2rem] text-xl">
+      <Icon icon={IconVueJs} size={22} />
+      {
+        dev.siteUrl && (
+          <Tooltip label={dev.name} placement="top">
+            <a href={dev.siteUrl} target="_blank" rel="noopener" class="w-[20px]" aria-label={dev.name}>
+              <svg width="100%" height="100%" viewBox="0 0 135 185" fill="none" class="dev-mark">
+                <path
+                  d="M128.516 93.2583C128.516 127.09 101.09 154.516 67.2582 154.516C33.4264 154.516 6 127.09 6 93.2583C6 59.4264 33.4264 32.0001 67.2582 32.0001C101.09 32.0001 128.516 59.4264 128.516 93.2583Z"
+                  stroke="currentColor"
+                  stroke-width="11"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M102.652 76.8883C71.2585 64.0457 53.9809 140.728 51.764 182.509C51.7168 183.397 52.7489 183.876 53.3975 183.266C85.4608 153.139 134.077 89.7433 102.652 76.8883Z"
+                  fill="currentColor"
+                  stroke-width="0"
+                />
+                <path
+                  d="M30.2503 108.471C60.1452 124.496 85.2723 50.0163 91.8048 8.6898C91.9438 7.81062 90.9668 7.22784 90.2585 7.76687C55.2473 34.4114 0.326527 92.4305 30.2503 108.471Z"
+                  fill="currentColor"
+                  stroke-width="0"
+                />
+              </svg>
+            </a>
+          </Tooltip>
+        )
+      }
+    </footer>
+  </div>
+</section>
+
+<style>
+  #about {
+    height: 93vh;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: var(--about-fg);
+    background: var(--about-bg);
+    position: relative;
+    overflow: hidden;
+    transition: color 500ms ease-in, background 500ms ease-in;
+    box-shadow: 0 0 50px 40px rgb(57, 53, 53);
+    z-index: 2000;
+  }
+
+  /* the dev signature inherits the section colour, replacing ThemeSvgMap */
+  .dev-mark {
+    color: var(--about-fg);
+  }
+
+  a :global(.social-icon) {
+    transition: scale 200ms ease-out;
+  }
+
+  a:hover :global(.social-icon),
+  a:focus-visible :global(.social-icon) {
+    scale: 1.2;
+  }
+
+  .typo {
+    bottom: 15%;
+    left: 6%;
+    width: 5%;
+    text-align: justify;
+    line-height: 25px;
+    flex-shrink: 0;
+    border-bottom: 2px solid;
+    padding-bottom: 0.5rem;
+  }
+
+  .typo p {
+    position: relative;
+    font-size: 20px;
+    font-family: 'Alegreya SC', serif;
+    width: max-content;
+    z-index: 300;
+  }
+
+  .typo::before {
+    position: absolute;
+    content: '’’';
+    font-family: 'carmine', serif;
+    font-size: 108px;
+    z-index: 300;
+    font-weight: bolder;
+    overflow: visible;
+  }
+
+  /* three columns of three, filled top-to-bottom — the original was three
+     flex columns side by side */
+  .dot-matrix {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    gap: 1.5rem;
+    position: absolute;
+  }
+
+  .dot-matrix.filled {
+    margin-left: 7rem;
+    margin-top: -3rem;
+  }
+
+  .dot-matrix.outlined {
+    opacity: 0.4;
+    margin-left: 6rem;
+    margin-top: -2rem;
+    z-index: 500;
+  }
+
+  @media (min-width: 640px) {
+    .typo p {
+      line-height: 36px;
+    }
+  }
+
+  @media (min-width: 640px) and (max-height: 700px) {
+    #about {
+      height: 42rem;
+    }
+  }
+
+  @media (max-width: 640px) and (max-height: 700px) {
+    #about {
+      height: 40rem;
+    }
+  }
+</style>

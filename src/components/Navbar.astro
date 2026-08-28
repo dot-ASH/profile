@@ -1,0 +1,79 @@
+---
+import { profile } from '../data/profile';
+---
+
+<section id="nav-div">
+  {/*
+    Fixed backdrop. The Vue version layered bgOpt.svg under bg.svg and
+    crossfaded them on load — except the `:on-load` binding was an attribute,
+    not an event, so the fade fired during render and never waited. With bg.svg
+    down from 6.1 MB to 44 KB there is nothing left to mask.
+  */}
+  <img src="/bg.svg" class="bg-img" alt="" role="presentation" fetchpriority="high" decoding="async" />
+
+  <div
+    class="navbar flex items-center justify-around pt-[1rem] md:ml-[3em] sm:ml-[1rem] xl:mx-[4rem] xl:ml-[6rem] xl:pt-[2rem]"
+  >
+    <div class="flex items-center pl-5 py-6 shrink-0">
+      <div class="text-4xl">
+        <p class="uppercase prime-font disable-select smoothed">Profile</p>
+      </div>
+    </div>
+
+    <div class="sm:flex hidden justify-center w-full m-[1rem]">
+      <div class="hr-line"></div>
+    </div>
+
+    <nav class="disable-select flex gap-[0.5rem] sm:gap-[1rem] items-center sm:mr-[3rem]">
+      {/* was a JS scrollTo(documentHeight); the anchor + scroll-behavior does it */}
+      <a href="#about" class="about-text lowercase prime-font cursor-pointer underline-effect smoothed text-right">
+        about
+      </a>
+      {
+        profile.Portfolio && (
+          <>
+            <p class="font-bold text-2xl lowercase prime-font smoothed text-right">~</p>
+            <span class="cursor-pointer underline-effect">
+              <a href={profile.Portfolio} target="_blank" rel="noopener" class="prime-font lowercase smoothed">
+                portfolio
+              </a>
+            </span>
+          </>
+        )
+      }
+    </nav>
+  </div>
+</section>
+
+<style>
+  .bg-img {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    background-color: black;
+    opacity: 0.9;
+    z-index: 45;
+    pointer-events: none;
+  }
+
+  #nav-div :global(div),
+  #nav-div :global(nav) {
+    color: var(--cream);
+    position: relative;
+    z-index: 1000;
+  }
+
+  .hr-line {
+    width: 90%;
+    height: 1px;
+    border-top: 0.15rem solid var(--cream);
+  }
+
+  @media (min-width: 640px) and (max-height: 700px) {
+    .navbar {
+      padding-top: 0rem;
+    }
+  }
+</style>

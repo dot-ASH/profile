@@ -1,0 +1,110 @@
+---
+import CurveText from './CurveText.astro';
+
+interface Props {
+  bio: string;
+  image: string;
+  /** Curve depth for this breakpoint's portrait. */
+  r: number;
+  fontSize: number;
+  curveWidth?: number;
+  curveHeight?: number;
+  /** Arc geometry, shared across breakpoints — see CurveText. */
+  curvePathHeight?: number;
+  class?: string;
+}
+
+const {
+  bio,
+  image,
+  r,
+  fontSize,
+  curveWidth = 400,
+  curveHeight = 215,
+  curvePathHeight = 215,
+  class: className,
+} = Astro.props;
+---
+
+{/* One component, three breakpoints. The Vue version wrote this block out three times. */}
+<div class:list={['relative justify-center items-center w-[35%]', className]}>
+  <div class="flex dp-border justify-center items-center" data-reveal="fade" data-reveal-duration="0.5" data-reveal-delay="0.5" data-reveal-ease="circ">
+    <div class="flex dp relative justify-center overflow-hidden">
+      <div class="cookie-text-cont non-prime-font">
+        <CurveText
+          text={bio}
+          width={curveWidth}
+          height={curveHeight}
+          pathHeight={curvePathHeight}
+          r={r}
+          fontSize={fontSize}
+        />
+      </div>
+      <div class="absolute left-0 h-full w-full">
+        <img src={image} width="2500" height="3800" alt="" class="cloud-dp" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-text-cont {
+    background: var(--surface);
+    color: var(--on-surface);
+    text-transform: uppercase;
+    font-weight: bolder;
+    transition: background 500ms ease-out, color 500ms ease-out;
+  }
+
+  .dp-border {
+    position: absolute;
+    border: 1px solid var(--cream);
+    width: 400px;
+    height: 580px;
+    border-radius: 226px;
+    z-index: 100;
+  }
+
+  .dp {
+    width: 93%;
+    height: 95%;
+    border-radius: 226px;
+    background: #947981;
+    overflow: hidden;
+    transition: 500ms ease-in;
+    box-shadow: 0 0 70px 10px rgb(49, 49, 49);
+  }
+
+  @media (max-width: 420px) {
+    .dp-border {
+      margin-top: -3rem;
+      width: 350px;
+      height: 480px;
+    }
+  }
+
+  @media (min-width: 420px) {
+    .dp-border {
+      width: 370px;
+      height: 520px;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .dp-border {
+      width: 400px;
+      height: 580px;
+    }
+
+    /* the xl portrait is nudged up a touch; see the height-aware rule below */
+    .m-dp {
+      transform: scale(1.01);
+    }
+  }
+
+  @media (min-width: 1280px) and (min-height: 800px) {
+    .m-dp {
+      transform: scale(1.1);
+    }
+  }
+</style>
